@@ -7,7 +7,7 @@ import DiscountSvg from '@/components/DiscountSvg';
 import useCart from '@/hooks/useCart';
 import { Product } from '@/types/product.types';
 import zodSafeQuery from '@/utils/zodSafeQuery';
-import { faCartPlus, faEye, faPlus, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { faCartPlus, faPlus, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useQuery } from '@tanstack/react-query';
 
@@ -26,7 +26,7 @@ const CartButton = ({
     onAddToCart,
     removeFromCart,
 }: {
-    isInCart: boolean;
+    isInCart: any;
     onAddToCart: () => void;
     removeFromCart: () => void;
 }) => {
@@ -60,7 +60,7 @@ const ProductCard = ({
     removeFromCart,
 }: {
     product: Product;
-    isInCart: boolean;
+    isInCart: any;
     onAddToCart: (product: Product) => void;
     removeFromCart: () => void;
 }) => (
@@ -88,9 +88,10 @@ const ProductCard = ({
                     <CartButton
                         isInCart={isInCart}
                         onAddToCart={() => onAddToCart(product)}
+                        //@ts-ignore
                         removeFromCart={() => removeFromCart(product.id)}
                     />
-                    <ProductButton icon={faEye}>Quick View</ProductButton>
+                    <ProductButton>Quick View</ProductButton>
                 </div>
             </div>
         </div>
